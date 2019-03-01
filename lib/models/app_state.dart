@@ -8,7 +8,7 @@ class AppState {
 
   AppState copyWith({int counter}) {
     return AppState(
-      counter: counter,
+      counter: counter ?? this.counter,
     );
   }
 
@@ -23,4 +23,9 @@ class AppState {
   String toString() {
     return 'AppState{counter: $counter}';
   }
+
+  // It's required for persistor
+  static AppState fromJson(dynamic json) => AppState(counter: json["counter"]);
+
+  dynamic toJson() => {'counter': counter};
 }
