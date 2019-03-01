@@ -4,6 +4,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_test/models/app_state.dart';
 import 'package:flutter_redux_test/selectors/selectors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux_test/actions/actions.dart';
+
+enum CounterActions { plus, munus }
 
 class Home extends StatelessWidget {
   Home({Key, key}) : super(key: key);
@@ -30,11 +33,11 @@ class Home extends StatelessWidget {
                 ),
                 IconButton(
                   icon: Icon(Icons.add_circle),
-                  onPressed: () => print("plus"),
+                  onPressed: () => vm.onActionButton(CounterActions.plus),
                 ),
                 IconButton(
                   icon: Icon(Icons.remove_circle),
-                  onPressed: () => print("minus"),
+                  onPressed: () => vm.onActionButton(CounterActions.munus),
                 ),
               ],
             ),
@@ -47,12 +50,25 @@ class Home extends StatelessWidget {
 
 class _ViewModel {
   final int counter;
+  final Function(CounterActions) onActionButton;
 
-  _ViewModel({@required this.counter});
+  _ViewModel({
+    @required this.counter,
+    @required this.onActionButton,
+  });
 
   static _ViewModel fromStore(Store<AppState> store) {
     return _ViewModel(
       counter: counterSelector(store.state),
+
+      onActionButton: (action) {
+        print("actions performed $action}");
+        if (action == CounterActions.plus) {
+          store.dispatch(Increment());
+        } else if (action == CounterActions.munus) {
+          store.dispatch(Decrement());
+        }
+      },
     );
   }
 
