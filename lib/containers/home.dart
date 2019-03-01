@@ -9,7 +9,9 @@ import 'package:flutter_redux_test/actions/actions.dart';
 enum CounterActions { plus, munus }
 
 class Home extends StatelessWidget {
-  Home({Key, key}) : super(key: key);
+  final WidgetBuilder devDrawerBuilder;
+
+  Home({Key key, this.devDrawerBuilder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class Home extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
         return Scaffold(
+          endDrawer: devDrawerBuilder != null ? devDrawerBuilder(context) : null,
           appBar: AppBar(
             title: Text('Some title'),
           ),
