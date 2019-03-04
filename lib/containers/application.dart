@@ -4,6 +4,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_test/models/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_test/containers/home.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_redux_test/l10n/localizations.dart';
 
 class Application extends StatelessWidget {
   final Store<AppState> store;
@@ -21,7 +23,18 @@ class Application extends StatelessWidget {
     return StoreProvider(
         store: store,
         child: MaterialApp(
-          title: 'Flutter Demo',
+//          Title can only generates after localizations
+//          onGenerateTitle: (BuildContext context) =>
+//            AppLocalizations.of(context).title,
+          localizationsDelegates: [
+            AppLocalizationsDelegate(),
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: [
+            const Locale('en'),
+            const Locale('ru'),
+          ],
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),

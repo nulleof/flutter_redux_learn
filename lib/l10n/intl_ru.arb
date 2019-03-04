@@ -1,0 +1,18 @@
+{
+  "@@last_modified": "2019-03-04T13:16:29.382357",
+  "hello": "Привет!",
+  "@hello": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "title": "Демка флаттера",
+  "@title": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "counter": "Значение счетчика:",
+  "@counter": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

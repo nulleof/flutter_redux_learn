@@ -5,6 +5,7 @@ import 'package:flutter_redux_test/models/app_state.dart';
 import 'package:flutter_redux_test/selectors/selectors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_test/actions/actions.dart';
+import 'package:flutter_redux_test/l10n/localizations.dart';
 
 enum CounterActions { plus, munus }
 
@@ -22,14 +23,14 @@ class Home extends StatelessWidget {
         return Scaffold(
           endDrawer: devDrawerBuilder != null ? devDrawerBuilder(context) : null,
           appBar: AppBar(
-            title: Text('Some title'),
+            title: Text(AppLocalizations.of(context).title),
           ),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Counter value is:',
+                  AppLocalizations.of(context).counter,
                 ),
                 Text(
                   vm.counter.toString(),

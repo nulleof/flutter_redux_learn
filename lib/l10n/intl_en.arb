@@ -1,0 +1,18 @@
+{
+  "@@last_modified": "2019-03-04T13:16:29.382357",
+  "hello": "Hello",
+  "@hello": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "title": "Flutter Demo",
+  "@title": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "counter": "Counter value is:",
+  "@counter": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
